@@ -22,7 +22,26 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+    <>
+      <div className="overflow-hidden bg-primary/10 text-primary py-[7px] text-[11px] md:text-[12.5px] font-semibold tracking-wide font-body z-[60] relative border-b border-primary/20">
+        <div className="flex whitespace-nowrap" style={{ animation: 'marquee-scroll 28s linear 0s infinite normal none running' }}>
+          {[1, 2, 3, 4].map((i) => (
+            <span key={i} className="flex items-center gap-0 shrink-0">
+              <span className="mx-6">🌿 India&apos;s Premium Sports Nutrition &amp; Ayurvedic Wellness</span>
+              <span className="mx-2 text-primary/50">✦</span>
+              <span className="mx-6">✨ Build Lean Muscle + Achieve Optimal Health</span>
+              <span className="mx-2 text-primary/50">✦</span>
+            </span>
+          ))}
+        </div>
+        <style dangerouslySetInnerHTML={{ __html: `
+          @keyframes marquee-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}} />
+      </div>
+      <header className={`sticky top-0 z-50 transition-all duration-300 ${
       isScrolled 
         ? 'bg-surface/90 backdrop-blur-md shadow-sm border-b border-border/50' 
         : 'bg-surface border-b border-transparent'
@@ -95,6 +114,7 @@ const Header = () => {
         </div>
       </nav>
     </header>
+    </>
   );
 };
 

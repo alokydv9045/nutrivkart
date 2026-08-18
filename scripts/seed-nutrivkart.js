@@ -1,0 +1,533 @@
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const bcrypt = require('bcryptjs');
+
+dotenv.config({ path: '.env.local' });
+dotenv.config();
+
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log('MongoDB connected for seeding'))
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+    process.exit(1);
+  });
+
+const productSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    slug: { type: String, required: true, unique: true },
+    category: { type: String, required: true },
+    image: { type: String, required: true },
+    images: { type: [String], default: [] },
+    price: { type: Number, required: true },
+    brand: { type: String, required: true },
+    rating: { type: Number, required: true, default: 0 },
+    numReviews: { type: Number, required: true, default: 0 },
+    countInStock: { type: Number, required: true, default: 0 },
+    description: { type: String, required: true },
+    isFeatured: { type: Boolean, default: false },
+    banner: String,
+    sizes: { type: [String], default: [] },
+    colors: { type: [String], default: [] },
+    packSize: { type: String },
+    packSize2: { type: String },
+    price2: { type: Number },
+    servings: { type: String },
+    isGSTIncluded: { type: Boolean, default: true },
+    priceNote: { type: String },
+    priceBadge: { type: String, enum: ['new-price', 'price-updated', 'coming-soon', 'sale'] },
+    checkoutMode: { type: String, enum: ['cart', 'enquiry'], default: 'cart' },
+    certifications: { type: Array },
+    subcategory: { type: String },
+  },
+  { timestamps: true }
+);
+
+const Product = mongoose.models.Product || mongoose.model('Product', productSchema);
+
+const userSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    isAdmin: { type: Boolean, required: true, default: false },
+  },
+  { timestamps: true }
+);
+
+const User = mongoose.models.User || mongoose.model('User', userSchema);
+
+const productsData = [
+  // WHEY PROTEIN & BLENDS
+  {
+    name: 'MuscleBlaze Biozyme Performance Whey',
+    slug: 'muscleblaze-biozyme-performance-whey',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 2499,
+    price2: 4699,
+    packSize: '1 kg',
+    packSize2: '2 kg',
+    brand: 'MuscleBlaze',
+    rating: 4.8,
+    numReviews: 124,
+    countInStock: 50,
+    description: 'Clinically tested for 50% higher protein absorption and 60% higher BCAA absorption.',
+    isFeatured: true,
+  },
+  {
+    name: 'MuscleBlaze Biozyme Whey PR',
+    slug: 'muscleblaze-biozyme-whey-pr',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 2799,
+    price2: 5299,
+    packSize: '1 kg',
+    packSize2: '2 kg',
+    brand: 'MuscleBlaze',
+    rating: 4.9,
+    numReviews: 89,
+    countInStock: 30,
+    description: 'Advanced formulation with Creapure.',
+  },
+  {
+    name: 'Avvatar Whey Protein',
+    slug: 'avvatar-whey-protein',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 2399,
+    price2: 4499,
+    packSize: '1 kg',
+    packSize2: '2 kg',
+    brand: 'Avvatar',
+    rating: 4.7,
+    numReviews: 205,
+    countInStock: 45,
+    description: 'Premium quality whey protein from fresh cow\'s milk.',
+  },
+  {
+    name: 'GNC Pro Performance Whey',
+    slug: 'gnc-pro-performance-whey',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 2699,
+    price2: 4999,
+    packSize: '1 kg',
+    packSize2: '2 kg',
+    brand: 'GNC',
+    rating: 4.5,
+    numReviews: 310,
+    countInStock: 15,
+    description: '100% Whey Protein with digestive enzymes.',
+    isFeatured: true,
+  },
+  {
+    name: 'NAKPRO Platinum Whey',
+    slug: 'nakpro-platinum-whey',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 1899,
+    price2: 3599,
+    packSize: '1 kg',
+    packSize2: '2 kg',
+    brand: 'NAKPRO',
+    rating: 4.3,
+    numReviews: 45,
+    countInStock: 100,
+    description: 'Cost-effective high-quality whey isolate.',
+  },
+  {
+    name: 'AS-IT-IS ONE Whey',
+    slug: 'as-it-is-one-whey',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 1499,
+    packSize: '1 kg',
+    brand: 'AS-IT-IS',
+    rating: 4.6,
+    numReviews: 550,
+    countInStock: 120,
+    description: 'Pure, unflavored raw whey protein concentrate.',
+  },
+  {
+    name: 'GNC Amp Gold',
+    slug: 'gnc-amp-gold',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 2999,
+    price2: 5599,
+    packSize: '1 kg',
+    packSize2: '2 kg',
+    brand: 'GNC',
+    rating: 4.8,
+    numReviews: 95,
+    countInStock: 25,
+    description: 'Advanced Muscle Performance Gold standard whey.',
+  },
+  {
+    name: 'Labrada 100% Whey',
+    slug: 'labrada-100-whey',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 2599,
+    price2: 4799,
+    packSize: '1 kg',
+    packSize2: '2 kg',
+    brand: 'Labrada',
+    rating: 4.4,
+    numReviews: 60,
+    countInStock: 40,
+    description: 'High-quality whey protein blend.',
+  },
+  {
+    name: 'Atom Whey Protein',
+    slug: 'atom-whey-protein',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 1999,
+    price2: 3799,
+    packSize: '1 kg',
+    packSize2: '2 kg',
+    brand: 'Atom',
+    rating: 4.5,
+    numReviews: 130,
+    countInStock: 60,
+    description: 'Enhanced whey with enzymes.',
+  },
+  {
+    name: 'MuscleAsylum Premium Whey',
+    slug: 'muscleasylum-premium-whey',
+    category: 'Whey Protein',
+    image: '/images/products/placeholder.jpg',
+    price: 1399,
+    packSize: '1 kg',
+    brand: 'MuscleAsylum',
+    rating: 4.2,
+    numReviews: 40,
+    countInStock: 80,
+    description: 'Affordable daily whey protein.',
+  },
+
+  // MASS GAINERS
+  {
+    name: 'Labrada Muscle Mass Gainer',
+    slug: 'labrada-muscle-mass-gainer',
+    category: 'Mass & Weight Gainers',
+    image: '/images/products/placeholder.jpg',
+    price: 1099,
+    price2: 2699,
+    packSize: '1 kg',
+    packSize2: '3 kg',
+    brand: 'Labrada',
+    rating: 4.7,
+    numReviews: 210,
+    countInStock: 30,
+    description: 'High calorie mass gainer for hardgainers.',
+    priceBadge: 'sale',
+  },
+  {
+    name: 'GNC Pro Performance Mass',
+    slug: 'gnc-pro-performance-mass',
+    category: 'Mass & Weight Gainers',
+    image: '/images/products/placeholder.jpg',
+    price: 1199,
+    price2: 2899,
+    packSize: '1 kg',
+    packSize2: '3 kg',
+    brand: 'GNC',
+    rating: 4.5,
+    numReviews: 150,
+    countInStock: 20,
+    description: 'Pro performance weight and mass gainer.',
+  },
+  {
+    name: 'MB Weight Gainer',
+    slug: 'mb-weight-gainer',
+    category: 'Mass & Weight Gainers',
+    image: '/images/products/placeholder.jpg',
+    price: 999,
+    price2: 2499,
+    packSize: '1 kg',
+    packSize2: '3 kg',
+    brand: 'MuscleBlaze',
+    rating: 4.4,
+    numReviews: 320,
+    countInStock: 100,
+    description: 'Weight gainer with added digestive enzymes.',
+  },
+  {
+    name: 'Ankerite Weight Gainer',
+    slug: 'ankerite-weight-gainer',
+    category: 'Mass & Weight Gainers',
+    image: '/images/products/placeholder.jpg',
+    price: 799,
+    price2: 1999,
+    packSize: '1 kg',
+    packSize2: '3 kg',
+    brand: 'Ankerite',
+    rating: 4.1,
+    numReviews: 80,
+    countInStock: 60,
+    description: 'Budget friendly weight gainer.',
+  },
+  
+  // PRE-WORKOUT
+  {
+    name: 'Cellucor C4',
+    slug: 'cellucor-c4',
+    category: 'Pre-Workout',
+    image: '/images/products/placeholder.jpg',
+    price: 1899,
+    packSize: '30 servings',
+    brand: 'Cellucor',
+    rating: 4.8,
+    numReviews: 450,
+    countInStock: 25,
+    description: 'Explosive energy and performance.',
+    priceBadge: 'price-updated',
+  },
+  {
+    name: 'MB Wrathx',
+    slug: 'mb-wrathx',
+    category: 'Pre-Workout',
+    image: '/images/products/placeholder.jpg',
+    price: 1299,
+    packSize: '30 servings',
+    brand: 'MuscleBlaze',
+    rating: 4.6,
+    numReviews: 120,
+    countInStock: 35,
+    description: 'Extreme pre-workout formula.',
+    priceBadge: 'new-price',
+  },
+  {
+    name: 'Gat Nitraflex',
+    slug: 'gat-nitraflex',
+    category: 'Pre-Workout',
+    image: '/images/products/placeholder.jpg',
+    price: 2199,
+    packSize: '30 servings',
+    brand: 'Gat Sport',
+    rating: 4.9,
+    numReviews: 210,
+    countInStock: 15,
+    description: 'Hyperemia and testosterone enhancing powder.',
+    priceBadge: 'sale',
+  },
+  {
+    name: 'Psychotic',
+    slug: 'psychotic',
+    category: 'Pre-Workout',
+    image: '/images/products/placeholder.jpg',
+    price: 2499,
+    packSize: '30 servings',
+    brand: 'Insane Labz',
+    rating: 4.7,
+    numReviews: 180,
+    countInStock: 10,
+    description: 'High stim pre-workout.',
+  },
+
+  // CREATINE
+  {
+    name: 'MB Creapro',
+    slug: 'mb-creapro',
+    category: 'Creatine',
+    image: '/images/products/placeholder.jpg',
+    price: 799,
+    packSize: '250g',
+    brand: 'MuscleBlaze',
+    rating: 4.8,
+    numReviews: 540,
+    countInStock: 80,
+    description: 'Creapure creatine monohydrate.',
+  },
+  {
+    name: 'ON Creatine',
+    slug: 'on-creatine',
+    category: 'Creatine',
+    image: '/images/products/placeholder.jpg',
+    price: 999,
+    packSize: '250g',
+    brand: 'Optimum Nutrition',
+    rating: 4.9,
+    numReviews: 890,
+    countInStock: 40,
+    description: 'Micronized creatine monohydrate powder.',
+  },
+  {
+    name: 'AS-IT-IS Creatine Monohydrate',
+    slug: 'as-it-is-creatine-monohydrate',
+    category: 'Creatine',
+    image: '/images/products/placeholder.jpg',
+    price: 0,
+    packSize: '250g',
+    brand: 'AS-IT-IS',
+    rating: 4.5,
+    numReviews: 320,
+    countInStock: 0,
+    description: 'Pure unflavored creatine.',
+    priceBadge: 'coming-soon',
+    priceNote: 'Coming Soon'
+  },
+
+  // BCAA / EAA
+  {
+    name: 'Xtend BCAA',
+    slug: 'xtend-bcaa',
+    category: 'BCAA',
+    image: '/images/products/placeholder.jpg',
+    price: 1799,
+    packSize: '30 servings',
+    brand: 'Scivation',
+    rating: 4.8,
+    numReviews: 650,
+    countInStock: 30,
+    description: 'The original 7G BCAA.',
+    priceBadge: 'price-updated',
+  },
+  {
+    name: 'MB BCAA Pro',
+    slug: 'mb-bcaa-pro',
+    category: 'BCAA',
+    image: '/images/products/placeholder.jpg',
+    price: 1199,
+    packSize: '30 servings',
+    brand: 'MuscleBlaze',
+    rating: 4.6,
+    numReviews: 240,
+    countInStock: 50,
+    description: 'Advanced intra-workout formula.',
+    priceBadge: 'new-price',
+  },
+
+  // AYURVEDIC & UNANI (HIGH TICKET)
+  {
+    name: 'Majun Salab',
+    slug: 'majun-salab',
+    category: 'Ayurvedic & Unani',
+    image: '/images/products/placeholder.jpg',
+    price: 14500,
+    packSize: '1 kg',
+    brand: 'NutriVKart Premium',
+    rating: 5.0,
+    numReviews: 12,
+    countInStock: 5,
+    description: 'Premium Majun Salab for vitality and endurance.',
+    checkoutMode: 'enquiry',
+    certifications: ['GMP Certified', 'Lab Tested'],
+    isFeatured: true,
+  },
+  {
+    name: 'Majun Arad Khurma',
+    slug: 'majun-arad-khurma',
+    category: 'Ayurvedic & Unani',
+    image: '/images/products/placeholder.jpg',
+    price: 18000,
+    packSize: '1 kg',
+    brand: 'NutriVKart Premium',
+    rating: 5.0,
+    numReviews: 8,
+    countInStock: 4,
+    description: 'Authentic Majun Arad Khurma.',
+    checkoutMode: 'enquiry',
+    certifications: ['100% Original', 'Export Quality'],
+  },
+  {
+    name: 'Premium Shilajit Resin',
+    slug: 'premium-shilajit-resin',
+    category: 'Ayurvedic & Unani',
+    image: '/images/products/placeholder.jpg',
+    price: 24000,
+    packSize: '500 g',
+    brand: 'NutriVKart Premium',
+    rating: 4.9,
+    numReviews: 25,
+    countInStock: 10,
+    description: 'Gold-grade purified Shilajit resin from the Himalayas.',
+    checkoutMode: 'enquiry',
+    certifications: ['Lab Tested', 'Heavy Metal Free'],
+  },
+  {
+    name: 'Safed Musli Extract',
+    slug: 'safed-musli-extract',
+    category: 'Ayurvedic & Unani',
+    image: '/images/products/placeholder.jpg',
+    price: 28000,
+    packSize: '1 kg',
+    brand: 'NutriVKart Premium',
+    rating: 4.8,
+    numReviews: 18,
+    countInStock: 8,
+    description: 'High potency Safed Musli root extract.',
+    checkoutMode: 'enquiry',
+    certifications: ['GMP Certified', '100% Pure'],
+  },
+  
+  // WELLNESS & VITAMINS
+  {
+    name: 'MB Fish Oil',
+    slug: 'mb-fish-oil',
+    category: 'Wellness & Vitamins',
+    image: '/images/products/placeholder.jpg',
+    price: 499,
+    packSize: '60 capsules',
+    brand: 'MuscleBlaze',
+    rating: 4.5,
+    numReviews: 320,
+    countInStock: 150,
+    description: '1000mg Omega 3 with 180mg EPA & 120mg DHA.',
+  },
+  {
+    name: 'GNC Multivitamin',
+    slug: 'gnc-multivitamin',
+    category: 'Wellness & Vitamins',
+    image: '/images/products/placeholder.jpg',
+    price: 899,
+    packSize: '60 tablets',
+    brand: 'GNC',
+    rating: 4.6,
+    numReviews: 210,
+    countInStock: 80,
+    description: 'Daily multivitamin for active men and women.',
+  },
+];
+
+async function seedProducts() {
+  try {
+    // Admin user seeding
+    await User.deleteMany();
+    console.log('Cleared existing users');
+    const adminPassword = await bcrypt.hash('123456', 10);
+    const adminUser = await User.create({
+      name: 'Admin',
+      email: 'admin@nutrivkart.com',
+      password: adminPassword,
+      isAdmin: true,
+    });
+    console.log('Successfully seeded admin user:', adminUser.email);
+
+    productsData.forEach(p => {
+      if (p.category === 'Whey Protein') p.image = '/images/products/whey.png';
+      else if (p.category === 'Mass & Weight Gainers' || p.category === 'Creatine' || p.category === 'Pre-Workout') p.image = '/images/products/gainer.png';
+      else if (p.category === 'Ayurvedic & Unani') p.image = '/images/products/ayurvedic.png';
+      else if (p.category === 'Wellness & Vitamins') p.image = '/images/products/vitamin.png';
+      else p.image = '/images/products/whey.png';
+      
+      // Ensure the gallery array is also populated
+      p.images = [p.image];
+    });
+
+    await Product.deleteMany();
+    console.log('Cleared existing products');
+    const created = await Product.insertMany(productsData);
+    console.log(`Successfully seeded ${created.length} products`);
+    process.exit(0);
+  } catch (error) {
+    console.error('Seeding failed:', error);
+    process.exit(1);
+  }
+}
+
+seedProducts();

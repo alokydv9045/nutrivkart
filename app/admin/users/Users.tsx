@@ -98,7 +98,13 @@ export default function Users() {
 
   const [search, setSearch] = useState('');
   const [roleFilter, setRoleFilter] = useState<'all' | 'admin' | 'user'>('all');
-  const [view, setView] = useState<'table' | 'cards'>(() => (typeof window !== 'undefined' && window.innerWidth < 640 ? 'cards' : 'table'));
+  const [view, setView] = useState<'table' | 'cards'>('table');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.innerWidth < 640) {
+      setView('cards');
+    }
+  }, []);
 
   const filtered: User[] = useMemo(() => {
     if (!users) return [];
@@ -245,7 +251,7 @@ export default function Users() {
       )}
 
       {!isLoading && filtered.length > 0 && view === 'cards' && (
-        <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4Snap snap-y'>
+        <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 snap-y'>
           {filtered.map((u: User) => (
             <div key={u._id} className={`p-6 bg-white/40 backdrop-blur-md border border-primary/10 rounded-[2rem] shadow-sm relative group transition-all hover:bg-white/60 ${selected.includes(u._id) ? 'ring-2 ring-primary bg-white/80' : ''}`}>
               <div className="absolute top-4 right-4">

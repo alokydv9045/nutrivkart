@@ -178,9 +178,9 @@ export default function BulkOrderList({
       {selectedOrders.size > 0 && (
         <div className="bg-surface-container-highest border border-outline-variant/10 text-on-surface shadow-sm rounded-xl">
           <div className="p-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <span className="font-medium">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+                <span className="font-medium w-full sm:w-auto mb-2 sm:mb-0">
                   {selectedOrders.size} order{selectedOrders.size > 1 ? 's' : ''} selected
                 </span>
                 
@@ -221,7 +221,7 @@ export default function BulkOrderList({
               </div>
 
               <button
-                className="btn btn-sm btn-ghost"
+                className="btn btn-sm btn-ghost self-start sm:self-auto"
                 onClick={() => setSelectedOrders(new Set())}
               >
                 Clear Selection
@@ -255,7 +255,7 @@ export default function BulkOrderList({
             onClick={() => toggleOrderSelection(order._id)}
           >
             <div className="card-body p-4">
-              <div className="flex items-start justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div className="flex items-start gap-4 flex-1">
                   {/* Checkbox */}
                   <input

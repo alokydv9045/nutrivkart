@@ -1,6 +1,4 @@
 > **BrainSync Context Pumper** 🧠
-> Dynamically loaded for active file: `.env.production` (Domain: **Generic Logic**)
+> Dynamically loaded for active file: `app\(front)\register\Form.tsx` (Domain: **Frontend (React/UI)**)
 
-### 📐 Generic Logic Conventions & Fixes
-- **[what-changed] 🟢 Edited .env.local (5 changes, 88min)**: Active editing session on .env.local.
-5 content changes over 88 minutes.
+*No specific memory context found for this file's domain.*

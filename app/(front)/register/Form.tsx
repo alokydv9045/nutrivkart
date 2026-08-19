@@ -144,7 +144,7 @@ const Form = () => {
               <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-700">
                 <div className="space-y-2">
                   <h1 className="text-3xl lg:text-4xl font-headline text-on-surface tracking-tight leading-tight">Begin your Ritual</h1>
-                  <p className="text-secondary font-body font-light text-base leading-relaxed opacity-70">Join our collective for a personalized artisanal experience.</p>
+                  <p className="text-on-surface-variant font-body font-light text-base leading-relaxed">Join our collective for a personalized artisanal experience.</p>
                 </div>
 
                 {/* Google Auth Button */}
@@ -174,7 +174,7 @@ const Form = () => {
 
                   <div className="relative flex items-center justify-center py-2">
                     <div className="w-full border-t border-outline-variant/20"></div>
-                    <span className="absolute px-4 bg-surface text-[9px] text-secondary font-label font-bold tracking-[0.2em] uppercase">OR USE EMAIL</span>
+                    <span className="absolute px-4 bg-surface text-[9px] text-on-surface-variant font-label font-bold tracking-[0.2em] uppercase">OR USE EMAIL</span>
                   </div>
                 </div>
 
@@ -183,7 +183,7 @@ const Form = () => {
                     <label className="block text-[9px] font-bold text-on-surface-variant uppercase tracking-widest ml-1" htmlFor="name">FULL NAME</label>
                     <input 
                       {...register('name', { required: 'Name is required' })}
-                      className="w-full px-4 py-3 bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all duration-300 placeholder:text-outline/30 rounded-t-sm text-sm" 
+                      className="w-full px-4 py-3 bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all duration-300 placeholder:text-on-surface-variant/50 text-on-surface rounded-t-sm text-sm" 
                       id="name" 
                       placeholder="Anya Sharma" 
                       type="text"
@@ -198,7 +198,7 @@ const Form = () => {
                         required: 'Email is required',
                         pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: 'Invalid email' }
                       })}
-                      className="w-full px-4 py-3 bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all duration-300 placeholder:text-outline/30 rounded-t-sm text-sm" 
+                      className="w-full px-4 py-3 bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all duration-300 placeholder:text-on-surface-variant/50 text-on-surface rounded-t-sm text-sm" 
                       id="email" 
                       placeholder="athlete@nutrivkart.com" 
                       type="email"
@@ -214,7 +214,7 @@ const Form = () => {
                           required: 'Password is required',
                           minLength: { value: 6, message: 'Minimum 6 characters' }
                         })}
-                        className="w-full px-4 py-3 bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all duration-300 placeholder:text-outline/30 rounded-t-sm text-sm" 
+                        className="w-full px-4 py-3 bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all duration-300 placeholder:text-on-surface-variant/50 text-on-surface rounded-t-sm text-sm" 
                         id="password" 
                         placeholder="••••••••" 
                         type={showPassword ? 'text' : 'password'}
@@ -244,7 +244,7 @@ const Form = () => {
                 </form>
 
                 <div className="text-center">
-                  <p className="text-secondary font-body text-xs opacity-60">
+                  <p className="text-on-surface-variant font-body text-xs">
                     Already have an account? 
                     <Link className="text-primary font-bold underline underline-offset-8 decoration-primary/20 hover:decoration-primary transition-all ml-2" href={`/signin?callbackUrl=${callbackUrl}`}>Login</Link>
                   </p>
@@ -258,13 +258,13 @@ const Form = () => {
                 <div className="space-y-2">
                   <button 
                     onClick={() => setStep(1)} 
-                    className="flex items-center gap-2 text-secondary hover:text-primary transition-colors mb-4 text-[9px] uppercase font-bold tracking-widest"
+                    className="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors mb-4 text-[9px] uppercase font-bold tracking-widest"
                   >
                     <span className="material-symbols-outlined text-xs">arrow_back</span>
                     Change details
                   </button>
                   <h1 className="text-3xl lg:text-4xl font-headline text-on-surface tracking-tight leading-tight">Secure your account</h1>
-                  <p className="text-secondary font-body font-light text-base leading-relaxed opacity-70">
+                  <p className="text-on-surface-variant font-body font-light text-base leading-relaxed">
                     Verify it's you. We've sent a 6-digit code to <span className="text-primary font-semibold">{email}</span>.
                   </p>
                 </div>
@@ -277,7 +277,7 @@ const Form = () => {
                         required: 'OTP is required',
                         pattern: { value: /^\d{6}$/, message: 'Enter 6 digits' }
                       })}
-                      className="w-full px-4 py-4 bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all duration-300 placeholder:text-outline/30 text-2xl tracking-[0.4em] text-center font-headline rounded-t-sm" 
+                      className="w-full px-4 py-4 bg-surface-container-low border-0 border-b-2 border-transparent focus:border-primary focus:ring-0 transition-all duration-300 placeholder:text-on-surface-variant/50 text-on-surface text-2xl tracking-[0.4em] text-center font-headline rounded-t-sm" 
                       id="otp" 
                       placeholder="000000" 
                       type="text"
@@ -301,7 +301,7 @@ const Form = () => {
                 </form>
 
                 <div className="text-center space-y-4">
-                  <p className="text-secondary font-body text-[11px] opacity-60">
+                  <p className="text-on-surface-variant font-body text-[11px]">
                     Didn't receive the code? 
                     <button 
                       onClick={() => sendOtp(getValues())} 

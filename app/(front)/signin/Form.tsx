@@ -140,7 +140,7 @@ const Form = () => {
             <div className="mb-12">
               <h1 className="text-2xl font-black tracking-tighter text-primary uppercase mb-2">NutriVKart Store</h1>
               <h2 className="text-4xl font-headline font-bold text-on-surface leading-tight mb-4">Welcome back</h2>
-              <p className="text-secondary font-body font-light">Return to your curated rituals of self-care.</p>
+              <p className="text-on-surface-variant font-body font-light">Return to your curated rituals of self-care.</p>
             </div>
 
             {/* Google Login Action */}
@@ -169,7 +169,7 @@ const Form = () => {
 
             <div className="relative mb-8 flex items-center">
               <div className="flex-grow border-t border-outline-variant/20"></div>
-              <span className="px-4 text-[10px] font-label uppercase tracking-widest text-[#725a39]/60">Or use email</span>
+              <span className="px-4 text-[10px] font-label uppercase tracking-widest text-on-surface-variant font-bold">Or use email</span>
               <div className="flex-grow border-t border-outline-variant/20"></div>
             </div>
 
@@ -178,9 +178,9 @@ const Form = () => {
               {step === 'credentials' ? (
                 <>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-label text-secondary uppercase tracking-[0.2em] font-bold" htmlFor="email">Email Address</label>
+                    <label className="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] font-bold" htmlFor="email">Email Address</label>
                     <input 
-                      className={`w-full bg-surface-container border-0 border-b-2 transition-all duration-300 px-4 py-4 rounded-t focus:ring-0 font-body text-on-surface ${
+                      className={`w-full bg-surface-container border-0 border-b-2 transition-all duration-300 px-4 py-4 rounded-t focus:ring-0 font-body text-on-surface placeholder:text-on-surface-variant/50 ${
                         errors.email ? 'border-error' : 'border-transparent focus:border-primary'
                       }`} 
                       id="email" 
@@ -199,11 +199,11 @@ const Form = () => {
 
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <label className="text-[10px] font-label text-secondary uppercase tracking-[0.2em] font-bold" htmlFor="password">Password</label>
+                      <label className="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] font-bold" htmlFor="password">Password</label>
                       <Link href="/contact" className="text-[10px] font-label text-primary hover:text-primary-container transition-colors uppercase tracking-widest font-bold">Forgot Password?</Link>
                     </div>
                     <input 
-                      className={`w-full bg-surface-container border-0 border-b-2 transition-all duration-300 px-4 py-4 rounded-t focus:ring-0 font-body text-on-surface ${
+                      className={`w-full bg-surface-container border-0 border-b-2 transition-all duration-300 px-4 py-4 rounded-t focus:ring-0 font-body text-on-surface placeholder:text-on-surface-variant/50 ${
                         errors.password ? 'border-error' : 'border-transparent focus:border-primary'
                       }`} 
                       id="password" 
@@ -224,7 +224,7 @@ const Form = () => {
                 <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                   <div className="space-y-2">
                     <div className="flex justify-between items-center">
-                      <label className="text-[10px] font-label text-secondary uppercase tracking-[0.2em] font-bold" htmlFor="otp">Verification Code</label>
+                      <label className="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] font-bold" htmlFor="otp">Verification Code</label>
                       <button 
                         type="button"
                         onClick={handleResendOtp}
@@ -237,7 +237,7 @@ const Form = () => {
                     <div className="relative">
                       <ShieldCheck className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary/40" />
                       <input 
-                        className={`w-full bg-surface-container border-0 border-b-2 transition-all duration-300 pl-12 pr-4 py-4 rounded-t focus:ring-0 font-headline text-2xl tracking-[0.5em] text-center text-on-surface ${
+                        className={`w-full bg-surface-container border-0 border-b-2 transition-all duration-300 pl-12 pr-4 py-4 rounded-t focus:ring-0 font-headline text-2xl tracking-[0.5em] text-center text-on-surface placeholder:text-on-surface-variant/50 ${
                           errors.otp ? 'border-error' : 'border-transparent focus:border-primary'
                         }`} 
                         id="otp" 
@@ -254,7 +254,7 @@ const Form = () => {
                         autoFocus
                       />
                     </div>
-                    <p className="text-[10px] text-secondary font-body mt-2">
+                    <p className="text-[10px] text-on-surface-variant font-body mt-2">
                       Enter the 6-digit code sent to your archive email.
                     </p>
                     {errors.otp?.message && <p className="text-error text-[10px] font-bold uppercase tracking-widest mt-1">{errors.otp.message}</p>}
@@ -263,7 +263,7 @@ const Form = () => {
                   <button 
                     type="button" 
                     onClick={() => setStep('credentials')}
-                    className="text-[10px] font-label text-secondary hover:text-primary transition-colors uppercase tracking-widest font-bold flex items-center gap-1"
+                    className="text-[10px] font-label text-on-surface-variant hover:text-primary transition-colors uppercase tracking-widest font-bold flex items-center gap-1"
                   >
                     <span className="material-symbols-outlined text-sm">arrow_back</span>
                     Change Email/Password
@@ -291,7 +291,7 @@ const Form = () => {
 
             {/* Footer Navigation */}
             <div className="mt-12 text-center">
-              <p className="font-body text-sm text-secondary">
+              <p className="font-body text-sm text-on-surface-variant">
                 New to our heritage? 
                 <Link 
                   href={`/register?callbackUrl=${encodeURIComponent(callbackUrl)}`}

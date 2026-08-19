@@ -65,12 +65,12 @@ const nextConfig = {
     ];
     const cspProd = [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' checkout.razorpay.com",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live checkout.razorpay.com",
       "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
       "font-src 'self' fonts.gstatic.com",
       "img-src 'self' data: blob: res.cloudinary.com lh3.googleusercontent.com",
-      "connect-src 'self' api.razorpay.com lumberjack.razorpay.com https://api.cloudinary.com",
-      "frame-src checkout.razorpay.com api.razorpay.com",
+      "connect-src 'self' https://vercel.live api.razorpay.com lumberjack.razorpay.com https://api.cloudinary.com",
+      "frame-src https://vercel.live checkout.razorpay.com api.razorpay.com",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",

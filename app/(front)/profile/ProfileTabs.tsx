@@ -47,7 +47,7 @@ export default function ProfileTabs() {
     },
   );
 
-  const [tab, setTab] = useState<'overview' | 'identity' | 'addresses' | 'loyalty' | 'coupons' | 'help'>(
+  const [tab, setTab] = useState<'overview' | 'orders' | 'identity' | 'addresses' | 'loyalty' | 'coupons' | 'help'>(
     'overview',
   );
 
@@ -58,19 +58,20 @@ export default function ProfileTabs() {
   );
 
   const TABS = [
-    { id: 'overview', label: 'Sanctuary', icon: 'dashboard' },
-    { id: 'identity', label: 'Cipher', icon: 'person' },
-    { id: 'addresses', label: 'Logistics', icon: 'location_on' },
-    { id: 'loyalty', label: 'Heritage', icon: 'auto_fix_high' },
-    { id: 'coupons', label: 'Vault', icon: 'sell' },
-    { id: 'help', label: 'Guidance', icon: 'help_center' },
+    { id: 'overview', label: 'Overview', icon: 'dashboard' },
+    { id: 'orders', label: 'My Orders', icon: 'shopping_bag' },
+    { id: 'identity', label: 'Profile', icon: 'person' },
+    { id: 'addresses', label: 'Addresses', icon: 'location_on' },
+    { id: 'loyalty', label: 'Loyalty', icon: 'auto_fix_high' },
+    { id: 'coupons', label: 'Coupons', icon: 'sell' },
+    { id: 'help', label: 'Help', icon: 'help_center' },
   ];
 
   if (!user && !userError) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6">
         <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
-        <p className="font-headline text-2xl text-primary italic animate-pulse">Sourcing your heritage records...</p>
+        <p className="font-headline text-2xl text-primary italic animate-pulse">Loading your profile...</p>
       </div>
     );
   }
@@ -80,7 +81,7 @@ export default function ProfileTabs() {
       <div className="min-h-[50vh] flex flex-col items-center justify-center p-12 text-center bg-surface-container-low rounded-lg border border-outline-variant/10">
         <h2 className="font-headline text-4xl text-primary italic mb-6">Unauthorized Access</h2>
         <p className="text-secondary font-body mb-12 opacity-70 max-w-sm">
-          Please establish your credentials to access the central identity archive.
+          Please log in to access your profile.
         </p>
         <Link 
           href="/signin" 
@@ -96,9 +97,9 @@ export default function ProfileTabs() {
     return (
       <div className="min-h-[50vh] flex flex-col items-center justify-center p-12 text-center">
         <span className="material-symbols-outlined text-error text-6xl mb-6">warning</span>
-        <h2 className="font-headline text-3xl text-primary italic mb-4">Archive Synchronization Failed</h2>
+        <h2 className="font-headline text-3xl text-primary italic mb-4">Connection Failed</h2>
         <p className="text-secondary font-body mb-8 opacity-70 max-w-sm">
-          We encountered an anomaly while sourcing your identity records. Please ensure your connection to the heritage network is stable.
+          We couldn't load your profile. Please check your connection and try again.
         </p>
         <button 
           onClick={() => window.location.reload()}
@@ -162,6 +163,18 @@ export default function ProfileTabs() {
             </div>
           )}
 
+          {tab === 'orders' && (
+            <div className="max-w-5xl mx-auto space-y-8">
+               <div className="mb-8">
+                 <h2 className="font-headline text-4xl text-primary italic">My Orders</h2>
+                 <p className="text-secondary font-body text-sm opacity-60 mt-2">View and track your recent orders.</p>
+               </div>
+               <div className="bg-surface-container-low p-8 rounded-lg border border-outline-variant/10 shadow-xl">
+                 <OrdersList />
+               </div>
+            </div>
+          )}
+
           {tab === 'identity' && (
             <div className="max-w-4xl mx-auto">
               <ProfileForm />
@@ -171,8 +184,8 @@ export default function ProfileTabs() {
           {tab === 'addresses' && (
             <div className="max-w-5xl mx-auto space-y-12">
                <div className="mb-8">
-                 <h2 className="font-headline text-4xl text-primary italic">Logistical Hub</h2>
-                 <p className="text-secondary font-body text-sm opacity-60 mt-2">Manage your destination records for ritual fulfillment.</p>
+                 <h2 className="font-headline text-4xl text-primary italic">Addresses</h2>
+                 <p className="text-secondary font-body text-sm opacity-60 mt-2">Manage your shipping addresses.</p>
                </div>
                <div className="bg-surface-container-low p-8 rounded-lg border border-outline-variant/10">
                  <AddressList addresses={addresses} reload={() => mutateAddresses()} />
@@ -189,8 +202,8 @@ export default function ProfileTabs() {
           {tab === 'coupons' && (
             <div className="max-w-5xl mx-auto space-y-8">
                <div className="mb-8 text-center">
-                 <h2 className="font-headline text-4xl text-primary italic">Heritage Rewards</h2>
-                 <p className="text-secondary font-body text-sm opacity-60 mt-2">Active blessings and ritual concessions available to you.</p>
+                 <h2 className="font-headline text-4xl text-primary italic">Coupons</h2>
+                 <p className="text-secondary font-body text-sm opacity-60 mt-2">Available coupons and discounts.</p>
                </div>
                <div className="bg-surface-container-low p-8 rounded-lg border border-outline-variant/10 shadow-xl">
                  <CouponsList />
@@ -201,20 +214,20 @@ export default function ProfileTabs() {
           {tab === 'help' && (
             <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-8">
-                <h2 className="font-headline text-4xl text-primary italic mb-8">Discourse & Support</h2>
+                <h2 className="font-headline text-4xl text-primary italic mb-8">Help & Support</h2>
                 <div className="space-y-6">
                    <div className="p-8 bg-surface-container-low rounded border border-outline-variant/10">
                       <div className="flex items-center gap-4 mb-4 text-primary">
                         <span className="material-symbols-outlined">mail</span>
-                        <p className="font-label font-bold text-sm">ARCHIVE CONDUIT</p>
+                        <p className="font-label font-bold text-sm">EMAIL SUPPORT</p>
                       </div>
                       <p className="font-body text-sm text-on-surface">support@nutrivkart.com</p>
-                      <p className="text-[10px] text-secondary opacity-50 mt-2 italic">Expect a response within 1 ritual cycle (24h).</p>
+                      <p className="text-[10px] text-secondary opacity-50 mt-2 italic">Expect a response within 24 hours.</p>
                    </div>
                    <div className="p-8 bg-surface-container-low rounded border border-outline-variant/10">
                       <div className="flex items-center gap-4 mb-4 text-primary">
                         <span className="material-symbols-outlined">call</span>
-                        <p className="font-label font-bold text-sm">DIRECT LINE</p>
+                        <p className="font-label font-bold text-sm">PHONE SUPPORT</p>
                       </div>
                       <p className="font-body text-sm text-on-surface">+91-HERITAGE-01</p>
                       <p className="text-[10px] text-secondary opacity-50 mt-2 italic">Mon - Fri • 09:00 - 18:00 IST</p>
@@ -223,12 +236,12 @@ export default function ProfileTabs() {
               </div>
 
               <div className="space-y-8">
-                <h2 className="font-headline text-2xl text-secondary italic mb-8">Inquiries</h2>
+                <h2 className="font-headline text-2xl text-secondary italic mb-8">FAQ</h2>
                 <div className="space-y-4">
                   {[
-                    { q: 'How do I update my cipher?', a: 'Visit the Identity tab to establish a new ritual password.' },
-                    { q: 'Where are my manifests?', a: 'All acquisition records are stored in the Manifest Archive.' },
-                    { q: 'How do I start a return?', a: 'Connect with our curators via the archive conduit above.' }
+                    { q: 'How do I update my password?', a: 'Visit the Profile tab to change your password.' },
+                    { q: 'Where are my orders?', a: 'You can view all your orders in the My Orders tab.' },
+                    { q: 'How do I return an item?', a: 'Contact our support team using the email or phone number above.' }
                   ].map((faq, i) => (
                     <div key={i} className="p-6 bg-surface-container-high/40 rounded border border-outline-variant/5">
                       <p className="font-label font-bold text-[10px] text-primary uppercase tracking-widest mb-2">{faq.q}</p>

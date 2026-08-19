@@ -109,12 +109,12 @@ const Form = () => {
         >
           <div className="mb-12 text-center md:text-left">
             <h1 className="font-headline text-4xl text-primary italic mb-4">Shipping Address</h1>
-            <p className="text-secondary font-body tracking-wide opacity-70">Where should we send your items?</p>
+            <p className="text-on-surface-variant font-body tracking-wide">Where should we send your items?</p>
           </div>
 
           {addresses && addresses.length > 0 && (
             <div className="mb-12">
-              <label className="text-[10px] font-label text-secondary uppercase tracking-[0.2em] font-bold block mb-4">Saved Locations</label>
+              <label className="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] font-bold block mb-4">Saved Locations</label>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {addresses.map((addr) => (
                   <button
@@ -127,8 +127,8 @@ const Form = () => {
                     }`}
                   >
                     <p className="font-label font-bold text-on-surface text-sm">{addr.fullName}</p>
-                    <p className="text-[11px] text-secondary mt-1 truncate">{addr.address}</p>
-                    <p className="text-[11px] text-secondary">{addr.city}, {addr.postalCode}</p>
+                    <p className="text-[11px] text-on-surface-variant mt-1 truncate">{addr.address}</p>
+                    <p className="text-[11px] text-on-surface-variant">{addr.city}, {addr.postalCode}</p>
                   </button>
                 ))}
               </div>
@@ -138,9 +138,9 @@ const Form = () => {
           <form onSubmit={handleSubmit(formSubmit)} className="space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-2">
-                <label className="text-[10px] font-label text-secondary uppercase tracking-[0.2em] font-bold" htmlFor="fullName">Full Name</label>
+                <label className="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] font-bold" htmlFor="fullName">Full Name</label>
                 <input 
-                  className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface"
+                  className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface placeholder:text-on-surface-variant/50"
                   id="fullName"
                   {...register('fullName', { required: 'Full name is required' })}
                   placeholder="The Receiver"
@@ -149,9 +149,9 @@ const Form = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-label text-secondary uppercase tracking-[0.2em] font-bold" htmlFor="country">Country</label>
+                <label className="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] font-bold" htmlFor="country">Country</label>
                 <input 
-                  className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface"
+                  className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface placeholder:text-on-surface-variant/50"
                   id="country"
                   {...register('country', { required: 'Country is required' })}
                   placeholder="Nation"
@@ -161,9 +161,9 @@ const Form = () => {
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-label text-secondary uppercase tracking-[0.2em] font-bold" htmlFor="address">Detailed Address</label>
+              <label className="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] font-bold" htmlFor="address">Detailed Address</label>
               <input 
-                className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface"
+                className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface placeholder:text-on-surface-variant/50"
                 id="address"
                 {...register('address', { required: 'Address is required' })}
                 placeholder="Suite, Street, Neighborhood"
@@ -173,9 +173,9 @@ const Form = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="space-y-2">
-                <label className="text-[10px] font-label text-secondary uppercase tracking-[0.2em] font-bold" htmlFor="city">City / Province</label>
+                <label className="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] font-bold" htmlFor="city">City / Province</label>
                 <input 
-                  className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface"
+                  className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface placeholder:text-on-surface-variant/50"
                   id="city"
                   {...register('city', { required: 'City is required' })}
                   placeholder="Metropolis"
@@ -184,9 +184,9 @@ const Form = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-[10px] font-label text-secondary uppercase tracking-[0.2em] font-bold" htmlFor="postalCode">Postal Code</label>
+                <label className="text-[10px] font-label text-on-surface-variant uppercase tracking-[0.2em] font-bold" htmlFor="postalCode">Postal Code</label>
                 <input 
-                  className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface"
+                  className="w-full bg-surface border-0 border-b border-outline-variant/30 focus:border-primary transition-all px-0 py-3 focus:ring-0 font-body text-on-surface placeholder:text-on-surface-variant/50"
                   id="postalCode"
                   {...register('postalCode', { required: 'Postal code is required' })}
                   placeholder="Registry Number"
@@ -199,7 +199,7 @@ const Form = () => {
               <button 
                 type="button" 
                 onClick={() => router.back()}
-                className="text-[10px] font-label text-secondary hover:text-primary transition-colors uppercase tracking-[0.2em] font-bold flex items-center gap-2"
+                className="text-[10px] font-label text-on-surface-variant hover:text-primary transition-colors uppercase tracking-[0.2em] font-bold flex items-center gap-2"
               >
                 <span className="material-symbols-outlined text-sm">arrow_back</span>
                 Back to Cart

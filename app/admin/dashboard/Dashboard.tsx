@@ -116,7 +116,7 @@ const Dashboard = () => {
 
       {/* Analytics Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 bg-surface-container-lowest p-10 border border-outline-variant/10 rounded-2xl shadow-sm relative overflow-hidden">
+        <div className="lg:col-span-2 bg-surface-container-lowest p-6 lg:p-10 border border-outline-variant/10 rounded-2xl shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
           <div className="relative">
             <div className="flex items-center justify-between mb-10">
@@ -145,7 +145,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="bg-surface-container-low p-10 rounded-2xl border border-outline-variant/10 flex flex-col">
+        <div className="bg-surface-container-low p-6 lg:p-10 rounded-2xl border border-outline-variant/10 flex flex-col">
           <h3 className="text-xl font-sans font-bold text-on-surface mb-8">Product Categories</h3>
           <div className="flex-1 flex items-center justify-center relative min-h-[240px]">
             <Doughnut 
@@ -200,7 +200,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="bg-primary/5 p-10 rounded-2xl relative overflow-hidden flex flex-col justify-between border border-primary/10">
+        <div className="bg-primary/5 p-6 lg:p-10 rounded-2xl relative overflow-hidden flex flex-col justify-between border border-primary/10">
           <div className="absolute -top-12 -right-12 w-48 h-48 opacity-10 rotate-12">
             <span className="material-symbols-outlined text-[12rem] text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>spa</span>
           </div>
@@ -227,7 +227,7 @@ const Dashboard = () => {
 
 function StatCard({ label, value, trend, icon, variant, negative }: any) {
   return (
-    <div className={`p-8 rounded-2xl border border-outline-variant/10 relative overflow-hidden group transition-all hover:shadow-xl hover:shadow-primary/5 ${variant === 'primary' ? 'bg-surface-container-lowest' : 'bg-surface-container-low'}`}>
+    <div className={`p-6 lg:p-8 rounded-2xl border border-outline-variant/10 relative overflow-hidden group transition-all hover:shadow-xl hover:shadow-primary/5 ${variant === 'primary' ? 'bg-surface-container-lowest' : 'bg-surface-container-low'}`}>
       <div className={`absolute top-0 right-0 w-24 h-24 rounded-bl-full -mr-8 -mt-8 transition-transform duration-700 group-hover:scale-110 ${variant === 'primary' ? 'bg-primary/5' : 'bg-secondary/5'}`}></div>
       <div className="flex flex-col gap-5 relative">
         <span className={`material-symbols-outlined text-2xl ${variant === 'primary' ? 'text-primary' : 'text-muted-foreground'}`} style={{ fontVariationSettings: "'FILL' 1" }}>{icon}</span>

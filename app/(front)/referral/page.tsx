@@ -15,13 +15,13 @@ export default function ReferralPage() {
   const { data: referralData, isLoading } = useSWR(session ? '/api/user/referral' : null, fetcher);
   const [copied, setCopied] = useState(false);
 
-  const referralCode = referralData?.code || 'AETHER-' + (session?.user?.name?.slice(0, 3).toUpperCase() || 'USER');
+  const referralCode = referralData?.code || 'NUTRI-' + (session?.user?.name?.slice(0, 3).toUpperCase() || 'USER');
   const referralLink = `${typeof window !== 'undefined' ? window.location.origin : ''}/register?ref=${referralCode}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(referralLink);
     setCopied(true);
-    toast.success('Path copied to clipboard');
+    toast.success('Link copied to clipboard');
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -31,11 +31,11 @@ export default function ReferralPage() {
 
       <div className="max-w-7xl mx-auto px-4 relative z-10 pt-24">
         <div className="mb-20 text-center">
-           <p className="text-[10px] font-bold uppercase tracking-[0.6em] text-primary mb-4">Heritage Expansion</p>
-           <h1 className="font-headline text-5xl md:text-8xl text-on-surface italic mb-8">Invite to the Circle</h1>
+           <p className="text-[10px] font-bold uppercase tracking-[0.6em] text-primary mb-4">Refer & Earn</p>
+           <h1 className="font-headline text-5xl md:text-8xl text-on-surface italic mb-8">Bring Your Squad</h1>
            <p className="text-secondary font-body max-w-3xl mx-auto opacity-70 leading-relaxed text-lg">
-             True wisdom is meant to be shared. Invite your circle to experience AetherAvia, 
-             and both of you shall be rewarded with artisanal gifts and credits for your next ritual.
+             Fitness is better with friends. Invite your gym buddies to experience NutriVKart, 
+             and you both will earn rewards towards your next supplement stack.
            </p>
         </div>
 
@@ -48,9 +48,9 @@ export default function ReferralPage() {
               className="bg-white/40 backdrop-blur-2xl border border-primary/10 rounded-[3rem] p-8 md:p-12 shadow-2xl relative overflow-hidden"
             >
               <div className="relative z-10">
-                <h2 className="text-3xl font-headline text-primary italic mb-6">Your Sacred Path</h2>
+                <h2 className="text-3xl font-headline text-primary italic mb-6">Your Referral Link</h2>
                 <p className="text-secondary opacity-70 mb-10 leading-relaxed">
-                  Share this unique path with your companions. When they join the heritage and complete their first ritual acquisition, you'll receive ₹500 in Vault Credits.
+                  Share this unique link with your friends. When they sign up and make their first purchase, you'll receive ₹500 in NutriVKart Credits.
                 </p>
 
                 <div className="space-y-6">
@@ -64,7 +64,7 @@ export default function ReferralPage() {
                       className="w-full md:w-auto bg-primary text-white px-8 py-4 rounded-xl font-bold uppercase tracking-widest text-[10px] flex items-center justify-center gap-3 hover:bg-primary-container transition-all active:scale-95"
                     >
                       {copied ? <Check size={16} /> : <Copy size={16} />}
-                      {copied ? 'Copied' : 'Copy Path'}
+                      {copied ? 'Copied' : 'Copy Link'}
                     </button>
                   </div>
 
@@ -105,15 +105,15 @@ export default function ReferralPage() {
 
           {/* How it Works Side */}
           <div className="lg:col-span-5 space-y-12">
-            <h3 className="text-3xl font-headline text-primary italic">The Three Pillars of Sharing</h3>
+            <h3 className="text-3xl font-headline text-primary italic">How it Works</h3>
             
             <div className="space-y-10">
               <div className="flex gap-8 relative">
                 <div className="absolute left-6 top-12 bottom-0 w-[1px] bg-primary/10"></div>
                 <div className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-headline italic text-xl shrink-0 z-10 shadow-lg">1</div>
                 <div>
-                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">Extend the Invite</h4>
-                  <p className="text-xs text-secondary opacity-60 leading-relaxed">Send your unique path to your circle. They'll receive an exclusive ₹250 welcome credit when they join.</p>
+                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">Send the Invite</h4>
+                  <p className="text-xs text-secondary opacity-60 leading-relaxed">Share your unique link with friends. They'll receive an exclusive ₹250 welcome credit when they join.</p>
                 </div>
               </div>
               
@@ -121,8 +121,8 @@ export default function ReferralPage() {
                 <div className="absolute left-6 top-12 bottom-0 w-[1px] bg-primary/10"></div>
                 <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline italic text-xl shrink-0 z-10">2</div>
                 <div>
-                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">First Ritual</h4>
-                  <p className="text-xs text-secondary opacity-60 leading-relaxed">Once they complete their first acquisition of over ₹1,000, their journey is truly initiated.</p>
+                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">First Purchase</h4>
+                  <p className="text-xs text-secondary opacity-60 leading-relaxed">Once they complete their first order of over ₹1,000, their referral is marked complete.</p>
                 </div>
               </div>
               
@@ -130,19 +130,19 @@ export default function ReferralPage() {
                 <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-headline italic text-xl shrink-0 z-10">3</div>
                 <div>
                   <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">Mutual Reward</h4>
-                  <p className="text-xs text-secondary opacity-60 leading-relaxed">You'll receive ₹500 in Vault Credits, and they'll get a complimentary artisanal sample kit with their next order.</p>
+                  <p className="text-xs text-secondary opacity-60 leading-relaxed">You'll receive ₹500 in NutriVKart Credits, and they'll get a free shaker bottle with their next order.</p>
                 </div>
               </div>
             </div>
 
             {!session && (
               <div className="p-8 bg-primary/5 rounded-[2rem] border border-primary/10 text-center">
-                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-6">Join the Circle to Start</p>
+                <p className="text-xs font-bold text-primary uppercase tracking-widest mb-6">Sign In to Start Earning</p>
                 <Link 
                   href="/signin?callbackUrl=/referral"
                   className="inline-block bg-primary text-white px-8 py-3 rounded-full font-bold uppercase tracking-widest text-[9px] hover:scale-105 transition-all shadow-md"
                 >
-                  Initiate Session
+                  Login / Register
                 </Link>
               </div>
             )}
@@ -152,4 +152,3 @@ export default function ReferralPage() {
     </div>
   );
 }
-

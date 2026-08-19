@@ -1,36 +1,36 @@
 import { Metadata } from 'next'
-import { Star, Users, Award, Heart, ShieldCheck } from 'lucide-react'
+import { Star, Users, Award, Heart, ShieldCheck, Dumbbell, Activity } from 'lucide-react'
 import Testimonials from '@/components/testimonials/Testimonials'
 
 export const metadata: Metadata = {
-  title: 'Customer Testimonials - AetherAvia',
-  description: 'Read what our customers say about AetherAvia skincare products. Real reviews from verified buyers sharing their experiences with our natural, cruelty-free beauty solutions.',
+  title: 'Customer Testimonials - NutriVKart',
+  description: 'Read what our customers say about NutriVKart nutritional supplements. Real reviews from verified buyers sharing their fitness and wellness transformations.',
 }
 
 export default function TestimonialsPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white pt-16">
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-green-50 to-blue-50 py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              What Our Customers Say
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 font-headline tracking-tight">
+              Real Transformations
             </h1>
-            <p className="text-xl text-gray-700 mb-8">
-              Discover why thousands of customers trust AetherAvia for their skincare journey.
-              Real stories from real people who love our natural, cruelty-free products.
+            <p className="text-xl text-gray-700 mb-8 font-body leading-relaxed">
+              Discover why thousands of athletes and health enthusiasts trust NutriVKart.
+              Real stories from real people who achieved their fitness goals with our premium supplements.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur rounded-lg px-6 py-3">
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur rounded-lg px-6 py-3 shadow-sm border border-gray-100">
                 <Star className="w-5 h-5 text-green-600 fill-current" />
-                <span className="font-semibold text-gray-900">4.8/5</span>
-                <span className="text-gray-600">Average Rating</span>
+                <span className="font-semibold text-gray-900">4.9/5</span>
+                <span className="text-gray-600 font-medium">Average Rating</span>
               </div>
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur rounded-lg px-6 py-3">
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur rounded-lg px-6 py-3 shadow-sm border border-gray-100">
                 <Users className="w-5 h-5 text-green-600" />
-                <span className="font-semibold text-gray-900">10,000+</span>
-                <span className="text-gray-600">Happy Customers</span>
+                <span className="font-semibold text-gray-900">25,000+</span>
+                <span className="text-gray-600 font-medium">Active Members</span>
               </div>
             </div>
           </div>
@@ -49,42 +49,42 @@ export default function TestimonialsPage() {
                   name: "Priya Sharma",
                   role: "Verified Buyer · Mumbai",
                   rating: 5,
-                  quote: "AetherAvia has transformed my skincare routine! The natural ingredients make my skin glow, and I love that it's cruelty-free. The packaging is beautiful too - feels premium and eco-friendly."
+                  quote: "NutriVKart's whey protein isolate is the cleanest I've ever used. Excellent mixability, no bloating, and the results speak for themselves. Highly recommended for anyone serious about their fitness journey!"
                 },
                 {
                   id: "review-2",
                   name: "Rahul Kumar",
                   role: "Verified Buyer · Delhi",
                   rating: 5,
-                  quote: "I've tried many skincare brands, but AetherAvia stands out. The products are effective, affordable, and the customer service is exceptional. Highly recommend!"
+                  quote: "I was skeptical about buying supplements online, but the authentication tags on NutriVKart products gave me peace of mind. Delivery was super fast, and the pre-workout gives an amazing pump without the crash."
                 },
                 {
                   id: "review-3",
                   name: "Anjali Patel",
-                  role: "Beauty Enthusiast · Ahmedabad",
+                  role: "Yoga Instructor · Ahmedabad",
                   rating: 5,
-                  quote: "As someone with sensitive skin, finding gentle yet effective products was challenging. AetherAvia's natural formulations have been a game-changer. My skin has never looked better!"
+                  quote: "Their range of organic vitamins and plant-based proteins is phenomenal. My energy levels have never been this consistent. Finally, a brand that understands holistic wellness and performance."
                 },
                 {
                   id: "review-4",
                   name: "Vikram Singh",
                   role: "Verified Buyer · Bengaluru",
                   rating: 4,
-                  quote: "Great products with visible results. The delivery was fast and the packaging was secure. Will definitely order again. Only giving 4 stars because I wish there were more product options."
+                  quote: "Great products with visible results in my muscle recovery. The BCAA blend tastes amazing. Giving 4 stars only because my favorite flavor goes out of stock quite fast!"
                 },
                 {
                   id: "review-5",
                   name: "Meera Joshi",
-                  role: "Skincare Blogger · Pune",
+                  role: "Fitness Blogger · Pune",
                   rating: 5,
-                  quote: "I love how AetherAvia combines traditional Ayurvedic wisdom with modern science. The results are amazing and I feel good about using products that are kind to my skin and the environment."
+                  quote: "I love how transparent NutriVKart is about their ingredients. No proprietary blends, no hidden fillers. Just pure science-backed nutrition that actually helps you reach your goals."
                 },
                 {
                   id: "review-6",
                   name: "Arjun Reddy",
                   role: "Verified Buyer · Hyderabad",
                   rating: 5,
-                  quote: "Outstanding quality and fast shipping. The products work as advertised and the scent is divine. AetherAvia has earned a loyal customer in me!"
+                  quote: "Outstanding quality and fast shipping. The mass gainer helped me break my plateau. NutriVKart has definitely earned a loyal customer in me!"
                 }
               ]}
             />
@@ -93,74 +93,74 @@ export default function TestimonialsPage() {
       </section>
 
       {/* Trust Indicators */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Why Customers Trust AetherAvia
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 font-headline">
+              Why Athletes Trust NutriVKart
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Our commitment to quality, transparency, and customer satisfaction has made us a trusted name in natural skincare.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto font-body">
+              Our commitment to purity, transparency, and performance has made us a trusted name in sports nutrition.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart className="w-8 h-8 text-green-600" />
+            <div className="text-center bg-white p-8 rounded-xl shadow-sm border border-gray-50">
+              <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <ShieldCheck className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">100% Natural</h3>
-              <p className="text-gray-600 text-sm">Plant-based ingredients sourced sustainably</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3 font-headline">100% Authentic</h3>
+              <p className="text-gray-600 text-sm font-body leading-relaxed">Directly sourced from manufacturers with verifyable authenticity tags.</p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <ShieldCheck className="w-8 h-8 text-blue-600" />
+            <div className="text-center bg-white p-8 rounded-xl shadow-sm border border-gray-50">
+              <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Dumbbell className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Cruelty-Free</h3>
-              <p className="text-gray-600 text-sm">PETA certified, never tested on animals</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3 font-headline">Peak Performance</h3>
+              <p className="text-gray-600 text-sm font-body leading-relaxed">Clinically dosed ingredients to maximize your workout potential.</p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Award className="w-8 h-8 text-purple-600" />
+            <div className="text-center bg-white p-8 rounded-xl shadow-sm border border-gray-50">
+              <div className="w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Activity className="w-8 h-8 text-purple-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Quality Assured</h3>
-              <p className="text-gray-600 text-sm">Rigorous testing and quality control</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3 font-headline">Lab Tested</h3>
+              <p className="text-gray-600 text-sm font-body leading-relaxed">Every batch is rigorously tested for purity and heavy metals.</p>
             </div>
 
-            <div className="text-center">
-              <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="text-center bg-white p-8 rounded-xl shadow-sm border border-gray-50">
+              <div className="w-16 h-16 bg-orange-50 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Users className="w-8 h-8 text-orange-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Customer First</h3>
-              <p className="text-gray-600 text-sm">Dedicated support and satisfaction guarantee</p>
+              <h3 className="text-lg font-semibold text-gray-900 mb-3 font-headline">Expert Support</h3>
+              <p className="text-gray-600 text-sm font-body leading-relaxed">Dedicated nutrition experts to help you choose the right stack.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-green-600 to-blue-600 text-white">
+      <section className="py-20 bg-gradient-to-r from-green-600 to-blue-600 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Join Thousands of Happy Customers
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 font-headline tracking-tight">
+            Ready to Transform Your Physique?
           </h2>
-          <p className="text-green-50 text-lg mb-8 max-w-2xl mx-auto">
-            Experience the AetherAvia difference. Natural, effective, and loved by customers worldwide.
+          <p className="text-green-50 text-lg md:text-xl mb-10 max-w-2xl mx-auto font-body font-light">
+            Experience the NutriVKart difference. Pure, potent, and proven by athletes worldwide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="/shop"
-              className="bg-white hover:bg-green-50 text-green-600 font-semibold px-8 py-4 rounded-lg transition-all"
+              href="/search"
+              className="bg-white hover:bg-gray-50 text-green-700 font-bold px-8 py-4 rounded-lg transition-all shadow-lg hover:shadow-xl uppercase tracking-wider text-sm flex items-center justify-center"
             >
-              Shop Our Products
+              Shop Supplements
             </a>
             <a
               href="/about"
-              className="border-white border hover:bg-white/10 text-white px-8 py-4 rounded-lg transition-all"
+              className="border-2 border-white/50 hover:border-white hover:bg-white/10 text-white font-bold px-8 py-4 rounded-lg transition-all uppercase tracking-wider text-sm flex items-center justify-center"
             >
-              Learn More About Us
+              Our Mission
             </a>
           </div>
         </div>

@@ -13,10 +13,10 @@ export default function LoyaltyPage() {
   const { data: loyaltyData, isLoading } = useSWR(session ? '/api/user/loyalty' : null, fetcher);
 
   const tiers = [
-    { name: 'Novice', range: '0 - 500', benefits: ['Standard support', 'Birthday gift'], color: 'bg-stone-200' },
-    { name: 'Seeker', range: '501 - 2000', benefits: ['5% off all orders', 'Early access to drops', 'Priority support'], color: 'bg-amber-100' },
-    { name: 'Keeper', range: '2001 - 5000', benefits: ['10% off all orders', 'Free express shipping', 'Exclusive ritual kits'], color: 'bg-primary/20' },
-    { name: 'Sage', range: '5001+', benefits: ['15% off all orders', 'Personal concierge', 'VIP heritage events'], color: 'bg-primary text-white' },
+    { name: 'Bronze', range: '0 - 500', benefits: ['Standard support', 'Birthday gift'], color: 'bg-stone-200' },
+    { name: 'Silver', range: '501 - 2000', benefits: ['5% off all orders', 'Early access to new flavors', 'Priority support'], color: 'bg-slate-300' },
+    { name: 'Gold', range: '2001 - 5000', benefits: ['10% off all orders', 'Free express shipping', 'Exclusive shaker bottles'], color: 'bg-yellow-100' },
+    { name: 'Platinum', range: '5001+', benefits: ['15% off all orders', 'Personal nutritionist', 'VIP fitness events'], color: 'bg-primary text-white' },
   ];
 
   return (
@@ -26,11 +26,11 @@ export default function LoyaltyPage() {
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto px-4 relative z-10 pt-24">
         <div className="mb-20 text-center">
-           <p className="text-[10px] font-bold uppercase tracking-[0.6em] text-primary mb-4">Heritage Rewards</p>
-           <h1 className="font-headline text-5xl md:text-8xl text-on-surface italic mb-8">The Vault of Aether</h1>
+           <p className="text-[10px] font-bold uppercase tracking-[0.6em] text-primary mb-4">NutriVKart Rewards</p>
+           <h1 className="font-headline text-5xl md:text-8xl text-on-surface italic mb-8">Fuel Your Progress</h1>
            <p className="text-secondary font-body max-w-3xl mx-auto opacity-70 leading-relaxed text-lg">
-             Your journey with AetherAvia is more than acquisition—it's an evolution. 
-             Every ritual you bring home earns you points in the Vault, unlocking exclusive access to ancient wisdom and artisanal treasures.
+             Your fitness journey with NutriVKart is rewarding. 
+             Every supplement you purchase earns you points, unlocking exclusive discounts, gear, and expert guidance.
            </p>
         </div>
 
@@ -49,13 +49,13 @@ export default function LoyaltyPage() {
                 <p className="text-xs font-bold text-secondary uppercase tracking-[0.3em] mb-2">Member Identity</p>
                 <h2 className="text-4xl font-headline text-primary italic mb-1">{session.user.name}</h2>
                 <span className="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mt-4">
-                  {loyaltyData?.tier || 'Novice'} Member
+                  {loyaltyData?.tier || 'Bronze'} Member
                 </span>
               </div>
               
               <div className="flex flex-col items-center border-y md:border-y-0 md:border-x border-primary/5 py-12 md:py-0">
                 <Award size={48} className="text-primary mb-6" strokeWidth={1} />
-                <p className="text-xs font-bold text-secondary uppercase tracking-[0.3em] mb-2">Vault Points</p>
+                <p className="text-xs font-bold text-secondary uppercase tracking-[0.3em] mb-2">Fitness Points</p>
                 <div className="flex items-baseline gap-2">
                   <span className="text-7xl font-headline text-primary italic leading-none">{loyaltyData?.points || 0}</span>
                   <Sparkles size={20} className="text-primary animate-pulse" />
@@ -71,19 +71,19 @@ export default function LoyaltyPage() {
                      className="h-full bg-primary"
                    />
                 </div>
-                <p className="text-[10px] text-secondary/60 font-medium">Next Tier: <span className="text-primary font-bold">Seeker</span> (350 points to go)</p>
+                <p className="text-[10px] text-secondary/60 font-medium">Next Tier: <span className="text-primary font-bold">Silver</span> (350 points to go)</p>
               </div>
             </div>
           </motion.div>
         ) : (
           <div className="bg-primary/5 border border-primary/10 rounded-[3rem] p-12 text-center mb-24">
-            <h2 className="text-3xl font-headline text-primary italic mb-6">Enter the Vault</h2>
-            <p className="text-secondary max-w-xl mx-auto mb-10 opacity-70">Sign in to track your points and unlock member-only heritage rewards.</p>
+            <h2 className="text-3xl font-headline text-primary italic mb-6">Join the Elite</h2>
+            <p className="text-secondary max-w-xl mx-auto mb-10 opacity-70">Sign in to track your points and unlock member-only fitness rewards.</p>
             <Link 
               href="/signin?callbackUrl=/loyalty" 
               className="bg-primary text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-[10px] hover:bg-primary-container transition-all shadow-xl"
             >
-              Sign In to Archive
+              Sign In to Rewards
             </Link>
           </div>
         )}
@@ -118,10 +118,10 @@ export default function LoyaltyPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="space-y-12">
             <div>
-              <h2 className="text-4xl font-headline text-primary italic mb-6">How to Accumulate Wisdom</h2>
+              <h2 className="text-4xl font-headline text-primary italic mb-6">How to Earn Points</h2>
               <p className="text-secondary opacity-70 leading-relaxed">
-                Points are earned through interaction with the heritage. 
-                For every ₹1 spent, you earn 1 Vault Point. You can also earn points through reviews and community engagement.
+                Points are earned through consistency. 
+                For every ₹1 spent, you earn 1 Point. You can also earn points through reviews and community engagement.
               </p>
             </div>
             
@@ -131,8 +131,8 @@ export default function LoyaltyPage() {
                   <Gift size={24} className="text-primary" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">Acquisitions</h4>
-                  <p className="text-xs text-secondary opacity-60">Earn 1 point for every ₹1 spent on any ritual artifact.</p>
+                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">Purchases</h4>
+                  <p className="text-xs text-secondary opacity-60">Earn 1 point for every ₹1 spent on any supplement or gear.</p>
                 </div>
               </div>
               <div className="flex gap-6">
@@ -140,8 +140,8 @@ export default function LoyaltyPage() {
                   <TrendingUp size={24} className="text-primary" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">Chronicles</h4>
-                  <p className="text-xs text-secondary opacity-60">Submit a detailed review with images to earn 50 bonus points.</p>
+                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">Progress Reviews</h4>
+                  <p className="text-xs text-secondary opacity-60">Submit a detailed product review to earn 50 bonus points.</p>
                 </div>
               </div>
               <div className="flex gap-6">
@@ -149,8 +149,8 @@ export default function LoyaltyPage() {
                   <History size={24} className="text-primary" strokeWidth={1.5} />
                 </div>
                 <div>
-                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">Heritage Cycles</h4>
-                  <p className="text-xs text-secondary opacity-60">Earn bonus points for consistent monthly ritual refills.</p>
+                  <h4 className="font-bold text-primary text-sm uppercase tracking-widest mb-2">Consistency</h4>
+                  <p className="text-xs text-secondary opacity-60">Earn bonus points for monthly subscription refills.</p>
                 </div>
               </div>
             </div>
@@ -161,15 +161,15 @@ export default function LoyaltyPage() {
               <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.8 }}
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCH8AX3rmkoojzeqfztDH33C-ozpMi8xQjEKjhtji4ruOcVsb0954dA2GzcdzSrw46FoznwjkYQZxwfDzwf4QR1UHwHCiW3tS109MOYGYhhgZgDkr23CBEtCAO5qH3esVdkE_Sr1MFgvW1Y-RaTZcYnD7z6zMWMKqNGH6g1l9KSDOISKVP8SBRSwIxD6y2Ul4BZTUJW_rvvdWaeuEQeB3ITG9URJYJq98lm5qkGV0X67XJ49vsGDAc1_E7N2Ty90IEzjdHaU_DvllbV" 
-                className="w-full h-full object-cover"
-                alt="AetherAvia Heritage"
+                src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=600&auto=format&fit=crop" 
+                className="w-full h-full object-cover grayscale"
+                alt="NutriVKart Fitness"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
             </div>
             <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-white/10 backdrop-blur-3xl rounded-[2rem] border border-white/20 p-8 flex flex-col justify-center z-20 shadow-2xl">
-               <p className="text-[10px] font-bold text-white uppercase tracking-[0.2em] mb-2 opacity-60">Authenticity</p>
-               <h4 className="text-white font-headline italic text-2xl">Grounded Rituals</h4>
+               <p className="text-[10px] font-bold text-white uppercase tracking-[0.2em] mb-2 opacity-60">Performance</p>
+               <h4 className="text-white font-headline italic text-2xl">Track Progress</h4>
             </div>
           </div>
         </div>
@@ -177,4 +177,3 @@ export default function LoyaltyPage() {
     </div>
   );
 }
-

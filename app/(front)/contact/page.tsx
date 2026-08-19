@@ -4,8 +4,8 @@ import ContactFAQ from './ContactFAQ';
 import ContactForm from './ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact Us | AetherAvia',
-  description: 'Whether you seek guidance on a personalized ritual or have a question about our artisanal ingredients, our archive is open to you.',
+  title: 'Contact Us | NutriVKart',
+  description: 'Whether you seek guidance on a personalized fitness stack or have a question about our premium supplements, our team is here for you.',
 };
 
 export default function ContactPage() {
@@ -23,7 +23,7 @@ export default function ContactPage() {
       <header className="max-w-4xl mx-auto text-center px-6 mb-24 relative z-10">
         <h1 className="text-5xl md:text-7xl font-headline tracking-tight text-primary mb-6">Contact Us</h1>
         <p className="text-lg md:text-xl font-body text-secondary max-w-2xl mx-auto leading-relaxed">
-          Whether you seek guidance on a personalized ritual or have a question about our artisanal ingredients, our archive is open to you.
+          Whether you seek guidance on a personalized fitness stack or have a question about our premium supplements, our team is here for you.
         </p>
       </header>
 
@@ -37,7 +37,7 @@ export default function ContactPage() {
             </div>
             <h3 className="text-xl font-headline text-primary mb-2">Email Us</h3>
             <p className="text-secondary font-body text-sm mb-4">Expect a response within 24 hours.</p>
-            <a className="text-on-surface font-semibold font-body hover:text-primary transition-colors underline decoration-outline-variant underline-offset-4 block" href="mailto:curators@AetherAvia.com">curators@AetherAvia.com</a>
+            <a className="text-on-surface font-semibold font-body hover:text-primary transition-colors underline decoration-outline-variant underline-offset-4 block" href="mailto:support@nutrivkart.com">support@nutrivkart.com</a>
           </div>
           {/* Card 2 */}
           <div className="bg-surface-container-low p-8 transition-all hover:bg-surface-container-high group rounded-lg shadow-sm">
@@ -54,8 +54,8 @@ export default function ContactPage() {
               <span className="material-symbols-outlined">location_on</span>
             </div>
             <h3 className="text-xl font-headline text-primary mb-2">Visit Us</h3>
-            <p className="text-secondary font-body text-sm mb-4">Our Flagship Heritage Store.</p>
-            <span className="text-on-surface font-semibold font-body block">12/A, Janpath Road, New Delhi</span>
+            <p className="text-secondary font-body text-sm mb-4">Our Head Office.</p>
+            <span className="text-on-surface font-semibold font-body block">12/A, Connaught Place, New Delhi</span>
           </div>
           {/* Card 4 */}
           <div className="bg-surface-container-low p-8 transition-all hover:bg-surface-container-high group rounded-lg shadow-sm">
@@ -83,26 +83,20 @@ export default function ContactPage() {
             <img 
               alt="Map location" 
               className="w-full h-full object-cover grayscale opacity-60" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkM-XH6eAU4fbtGisH8wyMM-CSLVWmXYq25f-5ia_BXHvuBguj7gVYTF3ZMmOGR1ftoaX481Qau0MttcJg_sDJcqkcYCbGzOJa187ZXeWiRICIXq1NpIpueYqEhxm9dNXZ3HwjBZvsUHYbegImWZjPXYWEa8y8rZul9fm5gbsWw-wfsYv6o_ryU0M3h8lm1ToioNmkIah9ngwUQJHqg0TfV4VElJUWUdacgidETMMc3Li3HVbcNGmgDKqYa6QGCI9SAnkq8_Jad1f-"
+              src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=600&auto=format&fit=crop"
             />
             <div className="absolute inset-0 bg-primary/5"></div>
             <div className="absolute bottom-6 left-6 bg-surface p-4 shadow-xl rounded">
-              <p className="font-headline text-primary text-lg">AetherAvia Flagship</p>
-              <p className="text-sm font-body text-secondary">Janpath Road, New Delhi</p>
+              <p className="font-headline text-primary text-lg">NutriVKart HQ</p>
+              <p className="text-sm font-body text-secondary">Connaught Place, New Delhi</p>
             </div>
           </div>
           <div className="space-y-8 pl-4 border-l-2 border-primary/20">
             <div>
               <h4 className="font-headline text-xl text-primary mb-2">Physical Address</h4>
               <p className="text-secondary font-body leading-relaxed">
-                The Heritage Archive Building, Suite 402<br/>
-                12/A Janpath Road, New Delhi, 110001
-              </p>
-            </div>
-            <div>
-              <h4 className="font-headline text-xl text-primary mb-2">Parking Info</h4>
-              <p className="text-secondary font-body leading-relaxed">
-                Complimentary valet parking is available at the front entrance for all patrons visiting the Archive.
+                NutriVKart Tower, Suite 402<br/>
+                12/A Connaught Place, New Delhi, 110001
               </p>
             </div>
           </div>
@@ -116,11 +110,11 @@ export default function ContactPage() {
             <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
             <span className="text-xs font-label uppercase tracking-widest font-bold">Quick Response Guarantee</span>
           </div>
-          <h2 className="text-3xl font-headline text-on-surface mb-4 leading-snug">We value your time as much as your skin.</h2>
-          <p className="text-secondary font-body leading-relaxed">Our concierge team of herbalists and skincare specialists aims to respond to every inquiry within a single business day.</p>
+          <h2 className="text-3xl font-headline text-on-surface mb-4 leading-snug">We value your time as much as your fitness.</h2>
+          <p className="text-secondary font-body leading-relaxed">Our concierge team of nutritionists and supplement specialists aims to respond to every inquiry within a single business day.</p>
         </div>
         <div className="flex flex-col md:items-end gap-6">
-          <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant font-bold">Follow Our Story</span>
+          <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant font-bold">Follow Our Journey</span>
           <div className="flex gap-4">
             <a className="w-12 h-12 flex items-center justify-center border border-outline-variant rounded hover:bg-primary hover:text-on-primary hover:border-primary transition-all text-on-surface" href="#">
               <span className="material-symbols-outlined">share</span>
@@ -145,11 +139,11 @@ export default function ContactPage() {
       <section className="max-w-7xl mx-auto px-6 relative z-10 mb-8">
         <div className="bg-primary-container p-12 flex flex-col md:flex-row justify-between items-center gap-8 relative overflow-hidden rounded-lg shadow-xl">
           <div className="absolute right-0 top-0 opacity-10 pointer-events-none">
-            <span className="material-symbols-outlined text-[200px]" style={{ fontVariationSettings: "'FILL' 1" }}>spa</span>
+            <span className="material-symbols-outlined text-[200px]" style={{ fontVariationSettings: "'FILL' 1" }}>fitness_center</span>
           </div>
           <div className="relative z-10 text-center md:text-left">
             <h2 className="text-3xl font-headline text-on-primary-container mb-2">Need Immediate Help?</h2>
-            <p className="text-on-primary-container/80 font-body">Our concierge is standing by to assist with urgent order issues.</p>
+            <p className="text-on-primary-container/80 font-body">Our team is standing by to assist with urgent order issues.</p>
           </div>
           <a className="relative z-10 px-10 py-4 bg-on-primary-container text-primary font-bold tracking-widest uppercase text-xs hover:bg-surface transition-all flex items-center gap-3 shadow-xl rounded" href="tel:+911234567890">
             <span className="material-symbols-outlined text-sm">phone_in_talk</span>

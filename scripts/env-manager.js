@@ -199,7 +199,7 @@ switch (command) {
 
   default:
     console.log(`
-🌟 AetherAvia Environment Manager
+🌟 NutriVKart Environment Manager
 
 Usage:
   node env-manager.js validate [file]     - Validate environment file

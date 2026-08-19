@@ -1,9 +1,9 @@
 {
-  "name": "AetherAvia-store",
+  "name": "NutriVKart-store",
   "version": "0.1.1",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "next dev -p 3000 --webpack",
     "build": "next build --webpack",
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint",

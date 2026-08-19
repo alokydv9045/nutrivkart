@@ -1,6 +1,6 @@
-# 🚀 Render Deployment Guide (AetherAvia Store)
+# 🚀 Render Deployment Guide (NutriVKart Store)
 
-This guide describes how to deploy the **AetherAvia Store** Next.js app to **Render** using the repo’s Blueprint file.
+This guide describes how to deploy the **NutriVKart Store** Next.js app to **Render** using the repo’s Blueprint file.
 
 ## ✅ What the repo already includes
 

@@ -81,7 +81,7 @@ const AdminLayout = ({
   };
 
   return (
-    <div className="bg-background text-on-background min-h-screen relative font-body selection:bg-primary/10 selection:text-primary">
+    <div className="bg-background text-on-background min-h-screen relative font-body selection:bg-primary/10 selection:text-primary overflow-x-hidden">
       {/* Tactile Depth Overlay */}
       <div className="fixed inset-0 pointer-events-none bg-noise z-50 opacity-[0.03]"></div>
 
@@ -99,7 +99,7 @@ const AdminLayout = ({
       </AnimatePresence>
 
       {/* SideNavBar */}
-      <aside className={`h-screen w-72 flex-col fixed left-0 top-0 bg-surface border-r border-outline-variant/20 z-40 transition-transform duration-500 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
+      <aside className={`h-screen w-72 flex-col fixed left-0 top-0 bg-surface border-r border-outline-variant/20 z-40 transition-transform duration-500 ease-in-out lg:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="p-8 h-full flex flex-col overflow-y-auto scrollbar-hide">
           <div className="flex items-center justify-between mb-12 flex-shrink-0">
             <div className="flex items-center gap-3">
@@ -171,7 +171,7 @@ const AdminLayout = ({
       </aside>
 
       {/* Main Content Area */}
-      <main className={`transition-all duration-500 ease-in-out ${sidebarOpen ? 'lg:ml-72' : 'ml-0'}`}>
+      <main className="transition-all duration-500 ease-in-out ml-0 lg:ml-72">
         {/* TopNavBar */}
         <header className="sticky top-0 z-30 bg-surface/80 backdrop-blur-xl flex justify-between items-center w-full px-4 sm:px-8 lg:px-12 py-5 border-b border-outline-variant/10">
           <div className="flex items-center gap-4 sm:gap-10">

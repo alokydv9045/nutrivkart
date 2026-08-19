@@ -14,7 +14,7 @@ export const config = {
   secret: process.env.NEXTAUTH_SECRET || 'fallback-secret-for-render-deployment-please-set-proper-secret',
   basePath: '/api/auth',
   // Add explicit URL configuration for Render
-  ...(process.env.NEXTAUTH_URL && { url: process.env.NEXTAUTH_URL }),
+  // removed url config because it is unsupported in NextAuth v5
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || 'placeholder',
@@ -171,20 +171,7 @@ export const config = {
       return false;
     },
   },
-  // Enhanced security settings
-  cookies: {
-    sessionToken: {
-      name: 'next-auth.session-token',
-      options: {
-        httpOnly: true,
-        sameSite: 'lax' as const,
-        path: '/',
-        secure: process.env.NODE_ENV === 'production',
-        // Don't set domain for Render deployment - let it auto-detect
-        maxAge: 24 * 60 * 60, // 24 hours
-      },
-    },
-  },
+
   // Security events logging
   events: {
     async signIn({ user, account, profile, isNewUser }: any) {
